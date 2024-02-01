@@ -235,7 +235,7 @@ export class EmployeeCalculate extends Component {
                 loadingCalculate: false,
             });
         } else {
-            alert("There was an error occured.");
+            alert("An error occured.");
             this.setState({ loading: false, loadingCalculate: false });
         }
     }

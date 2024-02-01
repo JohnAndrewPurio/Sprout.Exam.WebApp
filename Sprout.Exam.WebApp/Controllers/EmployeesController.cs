@@ -68,6 +68,11 @@ namespace Sprout.Exam.WebApp.Controllers
                 return NotFound();
             }
 
+            if (!DateIsFromThePast(input.Birthdate))
+            {
+                return BadRequest($"Birthdate should not be in the future");
+            }
+
             employee.FullName = input.FullName;
             employee.Birthdate = input.Birthdate.ToString("yyyy-MM-dd");
             employee.Tin = input.Tin;
@@ -97,6 +102,11 @@ namespace Sprout.Exam.WebApp.Controllers
                 return BadRequest($"Another user has already the same TIN id: {input.Tin}");
             }
 
+            if (!DateIsFromThePast(input.Birthdate))
+            {
+                return BadRequest($"Birthdate should not be in the future");
+            }
+
             var employee = new WorkEmployee
             {
                 FullName = input.FullName,
@@ -110,7 +120,6 @@ namespace Sprout.Exam.WebApp.Controllers
 
             return Created($"/api/employees/{employee.Id}", employee.Id);
         }
-
 
         /// <summary>
         /// Refactor this method to go through proper layers and perform soft deletion of an employee to the DB.
@@ -172,5 +181,6 @@ namespace Sprout.Exam.WebApp.Controllers
 
         private bool EmployeeExists(long id) => _context.WorkEmployees.Any(m => m.Id == id);
         private bool EmployeeExists(string tin) => _context.WorkEmployees.Any(m => m.Tin == tin);
+        private bool DateIsFromThePast(DateTime date) =>  date < DateTime.Now;
     }
 }
