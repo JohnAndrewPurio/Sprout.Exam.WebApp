@@ -5,7 +5,7 @@ using Xunit;
 
 namespace Sprout.Exam.WebApp.Models
 {
-    public class WorkEmployee
+    public class WorkEmployee : ISoftDelete
     {
         [Key]
         public int Id { get; set; }
@@ -13,6 +13,9 @@ namespace Sprout.Exam.WebApp.Models
         public string Birthdate { get; set; }
         public string Tin { get; set; }
         public int TypeId { get; set; }
+
+        public bool IsDeleted { get; set; }
+        public DateTimeOffset? DeletedAt { get; set; }
     }
 
     public interface IEmployee
@@ -48,6 +51,18 @@ namespace Sprout.Exam.WebApp.Models
                 EmployeeType.Contractual => new Contractual(),
                 _ => throw new ArgumentException("Employee Type not avaiable"),
             };
+        }
+    }
+
+    public interface ISoftDelete
+    {
+        public bool IsDeleted { get; set; }
+        public DateTimeOffset? DeletedAt { get; set; }
+
+        public void Undo()
+        {
+            IsDeleted = false;
+            DeletedAt = null;
         }
     }
 }

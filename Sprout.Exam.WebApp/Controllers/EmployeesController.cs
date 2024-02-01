@@ -26,7 +26,7 @@ namespace Sprout.Exam.WebApp.Controllers
         }
 
         /// <summary>
-        /// Refactor this method to go through proper layers and fetch from the DB.
+        /// Gets all the employee data stored in the database
         /// </summary>
         /// <returns></returns>
         [HttpGet]
@@ -38,7 +38,7 @@ namespace Sprout.Exam.WebApp.Controllers
         }
 
         /// <summary>
-        /// Refactor this method to go through proper layers and fetch from the DB.
+        /// Searches for a specific employee data using their id
         /// </summary>
         /// <returns></returns>
         [HttpGet("{id}")]
@@ -50,7 +50,7 @@ namespace Sprout.Exam.WebApp.Controllers
         }
 
         /// <summary>
-        /// Refactor this method to go through proper layers and update changes to the DB.
+        /// Updates employee data
         /// </summary>
         /// <returns></returns>
         [HttpPut("{id}")]
@@ -91,7 +91,7 @@ namespace Sprout.Exam.WebApp.Controllers
         }
 
         /// <summary>
-        /// Refactor this method to go through proper layers and insert employees to the DB.
+        /// Creates a new employee
         /// </summary>
         /// <returns></returns>
         [HttpPost]
@@ -122,7 +122,7 @@ namespace Sprout.Exam.WebApp.Controllers
         }
 
         /// <summary>
-        /// Refactor this method to go through proper layers and perform soft deletion of an employee to the DB.
+        /// Deletes employee data in the database
         /// </summary>
         /// <returns></returns>
         [HttpDelete("{id}")]

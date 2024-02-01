@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Sprout.Exam.WebApp.Migrations
 {
@@ -15,7 +16,9 @@ namespace Sprout.Exam.WebApp.Migrations
                     FullName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Birthdate = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Tin = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    TypeId = table.Column<int>(type: "int", nullable: false)
+                    TypeId = table.Column<int>(type: "int", nullable: false),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false),
+                    DeletedAt = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true)
                 },
                 constraints: table =>
                 {

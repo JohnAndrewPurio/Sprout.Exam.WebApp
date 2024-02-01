@@ -12,6 +12,7 @@ export class EmployeeEdit extends Component {
     componentDidMount() {
         this.getEmployee(this.props.match.params.id);
     }
+
     handleChange(event) {
         this.setState({ [event.target.name]: event.target.value });
     }
